@@ -22,29 +22,30 @@ export default function PostCard({ post }: PostCardProps) {
 				</div>
 
 				{/* Content */}
-				<div className="p-6">
+				<div className="p-4 sm:p-6">
 					{/* Category */}
 					<div className="mb-2">
-						<span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+						<span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
 							{post.category}
 						</span>
 					</div>
 
 					{/* Title */}
-					<h2 className="mb-2 text-xl font-semibold leading-tight group-hover:text-primary transition-colors">
+					<h2 className="mb-2 text-lg sm:text-xl font-semibold leading-tight group-hover:text-primary transition-colors">
 						{post.title}
 					</h2>
 
 					{/* Description */}
-					<p className="mb-4 text-sm text-muted-foreground line-clamp-2">
+					<p className="mb-3 sm:mb-4 text-sm text-muted-foreground line-clamp-2">
 						{post.description}
 					</p>
 
 					{/* Meta Info */}
-					<div className="flex items-center gap-4 text-xs text-muted-foreground">
+					<div className="flex items-center gap-3 sm:gap-4 text-xs text-muted-foreground">
 						<div className="flex items-center gap-1">
 							<Calendar className="h-3 w-3" />
-							<span>{new Date(post.pubDate).toLocaleDateString('ko-KR')}</span>
+							<span className="hidden sm:inline">{new Date(post.pubDate).toLocaleDateString('ko-KR')}</span>
+							<span className="sm:hidden">{new Date(post.pubDate).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}</span>
 						</div>
 						<div className="flex items-center gap-1">
 							<Clock className="h-3 w-3" />
@@ -55,7 +56,7 @@ export default function PostCard({ post }: PostCardProps) {
 					{/* Tags */}
 					{post.tags && post.tags.length > 0 && (
 						<div className="mt-3 flex flex-wrap gap-1">
-							{post.tags.slice(0, 3).map((tag) => (
+							{post.tags.slice(0, 2).map((tag) => (
 								<span
 									key={tag}
 									className="inline-flex items-center gap-1 rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground"
@@ -64,9 +65,9 @@ export default function PostCard({ post }: PostCardProps) {
 									{tag}
 								</span>
 							))}
-							{post.tags.length > 3 && (
+							{post.tags.length > 2 && (
 								<span className="text-xs text-muted-foreground">
-									+{post.tags.length - 3} more
+									+{post.tags.length - 2} more
 								</span>
 							)}
 						</div>

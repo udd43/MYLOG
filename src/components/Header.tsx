@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes'
 import { siteConfig } from '@/data/site.config'
 import Search from './Search'
 import { Post } from '@/lib/posts'
-import FuzzyText from './FuzzyText'
+import SimpleFuzzyText from './SimpleFuzzyText'
 
 interface HeaderProps {
 	posts: Post[]
@@ -43,8 +43,8 @@ export default function Header({ posts }: HeaderProps) {
 			<div className="container mx-auto flex h-16 items-center justify-between px-4">
 				{/* Left side - Logo */}
 				<Link href="/" className="flex items-center space-x-2">
-					<FuzzyText 
-						fontSize="1.5rem"
+					<SimpleFuzzyText 
+						fontSize="clamp(0.8rem, 2.5vw, 2rem)"
 						fontWeight={700}
 						color="hsl(var(--foreground))"
 						baseIntensity={0.1}
@@ -52,11 +52,11 @@ export default function Header({ posts }: HeaderProps) {
 						enableHover={true}
 					>
 						{siteConfig.title}
-					</FuzzyText>
+					</SimpleFuzzyText>
 				</Link>
 
 				{/* Center - Desktop Navigation */}
-				<nav className="hidden md:flex items-center space-x-6">
+				<nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 absolute left-1/2 transform -translate-x-1/2">
 					<Link
 						href="/"
 						className="text-sm font-medium transition-colors hover:text-primary"
@@ -87,36 +87,36 @@ export default function Header({ posts }: HeaderProps) {
 				</nav>
 
 				{/* Right side - Search, Theme Toggle & Mobile Menu Button */}
-				<div className="flex items-center space-x-2">
+				<div className="flex items-center space-x-1 sm:space-x-2">
 					<Search posts={posts} />
 					{isAdmin && (
 						<button
 							onClick={handleLogout}
-							className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+							className="hidden sm:inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-8 w-8 sm:h-10 sm:w-10"
 							title="로그아웃"
 						>
-							<LogOut className="h-4 w-4" />
+							<LogOut className="h-3 w-3 sm:h-4 sm:w-4" />
 							<span className="sr-only">로그아웃</span>
 						</button>
 					)}
 					<button
 						onClick={toggleTheme}
-						className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+						className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-8 w-8 sm:h-10 sm:w-10"
 					>
-						<Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-						<Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+						<Sun className="h-3 w-3 sm:h-4 sm:w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+						<Moon className="absolute h-3 w-3 sm:h-4 sm:w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
 						<span className="sr-only">테마 전환</span>
 					</button>
 
 					{/* Mobile Menu Button */}
 					<button
 						onClick={toggleMenu}
-						className="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+						className="lg:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-8 w-8 sm:h-10 sm:w-10"
 					>
 						{isMenuOpen ? (
-							<X className="h-4 w-4" />
+							<X className="h-3 w-3 sm:h-4 sm:w-4" />
 						) : (
-							<Menu className="h-4 w-4" />
+							<Menu className="h-3 w-3 sm:h-4 sm:w-4" />
 						)}
 						<span className="sr-only">메뉴 토글</span>
 					</button>

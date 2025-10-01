@@ -5,19 +5,19 @@ import { SOCIALNETWORKS } from '@/data/links'
 export default function Footer() {
 	return (
 		<footer className="border-t bg-background">
-			<div className="container mx-auto px-4 py-8">
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div className="container mx-auto px-4 py-6 sm:py-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 					{/* About */}
-					<div>
-						<h3 className="text-lg font-semibold mb-4">{siteConfig.title}</h3>
+					<div className="text-center sm:text-left">
+						<h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">{siteConfig.title}</h3>
 						<p className="text-sm text-muted-foreground">
 							{siteConfig.description}
 						</p>
 					</div>
 
 					{/* Quick Links */}
-					<div>
-						<h3 className="text-lg font-semibold mb-4">빠른 링크</h3>
+					<div className="text-center sm:text-left">
+						<h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">빠른 링크</h3>
 						<ul className="space-y-2">
 							<li>
 								<Link
@@ -47,9 +47,9 @@ export default function Footer() {
 					</div>
 
 					{/* Social Links */}
-					<div>
-						<h3 className="text-lg font-semibold mb-4">소셜 미디어</h3>
-						<div className="flex space-x-4">
+					<div className="text-center sm:text-left sm:col-span-2 lg:col-span-1">
+						<h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">소셜 미디어</h3>
+						<div className="flex justify-center sm:justify-start space-x-4">
 							{SOCIALNETWORKS.map((social) => (
 								<Link
 									key={social.name}
@@ -66,7 +66,7 @@ export default function Footer() {
 					</div>
 				</div>
 
-				<div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+				<div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t text-center text-sm text-muted-foreground">
 					<p>
 						© {new Date().getFullYear()} {siteConfig.author}. All rights reserved.
 					</p>

@@ -20,17 +20,17 @@ export default function PostList({ posts, title, description }: PostListProps) {
 	}
 
 	return (
-		<div className="space-y-8">
+		<div className="space-y-6 sm:space-y-8 text-left">
 			{(title || description) && (
-				<div className="text-center">
-					{title && <h1 className="text-3xl font-bold mb-2">{title}</h1>}
+				<div className="text-center px-4 py-6">
+					{title && <h1 className="text-2xl sm:text-3xl font-bold mb-2 px-4 py-2">{title}</h1>}
 					{description && (
-						<p className="text-lg text-muted-foreground">{description}</p>
+						<p className="text-base sm:text-lg text-muted-foreground px-4 py-2">{description}</p>
 					)}
 				</div>
 			)}
 
-			<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			<div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-start">
 				{posts.map((post) => (
 					<PostCard key={post.slug} post={post} />
 				))}

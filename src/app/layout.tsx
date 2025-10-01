@@ -64,15 +64,9 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<div className="relative flex min-h-screen flex-col">
-						{/* Background */}
-						<div className="fixed inset-0 z-0">
-							<div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-pink-500/30 animate-gradient"></div>
-							<div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-cyan-500/15 to-teal-500/20 animate-gradient" style={{animationDelay: '2s'}}></div>
-							<div className="absolute inset-0 bg-gradient-to-bl from-violet-500/15 via-fuchsia-500/10 to-rose-500/15 animate-gradient" style={{animationDelay: '4s'}}></div>
-						</div>
 						
 						{/* Content */}
-						<div className="relative z-10 flex min-h-screen flex-col bg-background/90 backdrop-blur-sm">
+						<div className="relative z-10 flex min-h-screen flex-col bg-background/80 backdrop-blur-sm">
 							<Header posts={posts} />
 							<main className="flex-1">{children}</main>
 							<Footer />

@@ -1,17 +1,17 @@
 import { getAllPosts } from '@/lib/posts'
 import PostList from '@/components/PostList'
 import { siteConfig } from '@/data/site.config'
-import FuzzyText from '@/components/FuzzyText'
+import SimpleFuzzyText from '@/components/SimpleFuzzyText'
 
 export default function HomePage() {
 	const posts = getAllPosts()
 
 	return (
-		<div className="container mx-auto px-4 py-8">
-			{/* Hero Section */}
-			<section className="mb-12 text-center">
-				<div className="mb-4">
-					<FuzzyText 
+		<div className="min-h-screen flex flex-col justify-center items-center px-4 py-8 sm:py-12">
+			{/* Hero Section - 정가운데 */}
+			<section className="text-center -mt-24 sm:-mt-28">
+				<div className="mb-4 sm:mb-6">
+					<SimpleFuzzyText 
 						fontSize="clamp(2rem, 8vw, 6rem)"
 						fontWeight={900}
 						color="hsl(var(--foreground))"
@@ -20,11 +20,8 @@ export default function HomePage() {
 						enableHover={true}
 					>
 						{siteConfig.title}
-					</FuzzyText>
+					</SimpleFuzzyText>
 				</div>
-				<p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-					{siteConfig.description}
-				</p>
 			</section>
 
 			{/* Latest Posts */}
